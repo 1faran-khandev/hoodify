@@ -7,7 +7,7 @@ export default function CartList({
   onCloseCart,
   onRemoveItem,
 }) {
-  // ✅ Calculate Total
+  //  Calculate Total
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity * (1 - (item.discount || 0)),
     0
@@ -22,7 +22,7 @@ export default function CartList({
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="fixed right-0 top-0 w-80 sm:w-96 h-full bg-white dark:bg-gray-900 shadow-2xl z-50 flex flex-col"
       >
-        {/* 🧾 Header */}
+        {/*  Header */}
         <div className="p-4 border-b flex justify-between items-center font-bold text-lg">
           <span>Your Cart</span>
           <button
@@ -33,7 +33,7 @@ export default function CartList({
           </button>
         </div>
 
-        {/* 🛒 Cart Items */}
+        {/*  Cart Items */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {cartItems.length === 0 ? (
             <p className="text-gray-500 text-sm text-center mt-10">
@@ -60,7 +60,7 @@ export default function CartList({
           )}
         </div>
 
-        {/* ✅ Footer */}
+        {/*  Footer */}
         {cartItems.length > 0 && (
           <div className="p-4 border-t space-y-4">
             <div className="flex justify-between text-lg font-semibold">

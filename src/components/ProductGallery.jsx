@@ -8,7 +8,7 @@ export default function ProductGallery({ products, onAddToCart }) {
       className="py-20 px-4 sm:px-6 lg:px-12 bg-white text-black"
     >
       <div className="max-w-7xl mx-auto">
-        {/* 🧥 Section Header */}
+        {/*  Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold uppercase tracking-widest">
             Our Hoodie Line
@@ -18,7 +18,7 @@ export default function ProductGallery({ products, onAddToCart }) {
           </p>
         </div>
 
-        {/* 📦 Product Grid */}
+        {/*  Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {products.map((product) => (
             <ProductCard

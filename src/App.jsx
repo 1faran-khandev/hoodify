@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -21,7 +20,7 @@ export default function App() {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
-  // ✅ Toast state
+  //  Toast state
   const [toast, setToast] = useState({ message: "", visible: false });
 
 const showToast = (msg) => {
@@ -33,29 +32,29 @@ const handleAddToCart = (product) => {
   setCart((prevCart) => {
     const exists = prevCart.find((item) => item.id === product.id);
     if (exists) {
-      showToast("Increased quantity in cart 🛒");
+      showToast("Increased quantity in cart ");
       return prevCart.map((item) =>
         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       );
     } else {
-      showToast("Added to cart ✅");
+      showToast("Added to cart ");
       return [...prevCart, { ...product, quantity: 1 }];
     }
   });
 
-    // ✅ Show toast
-    setToast({ message: `${product.name} added to cart 🛒`, visible: true });
+    // Show toast
+    setToast({ message: `${product.name} added to cart `, visible: true });
     setTimeout(() => {
       setToast({ message: "", visible: false });
     }, 2000);
   };
 
-  // ❌ Remove one item
+ 
   const handleRemoveItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
-  // 🔁 Clear all
+  // Clear all
   const handleClearCart = () => {
     setCart([]);
   };
@@ -66,16 +65,16 @@ const handleAddToCart = (product) => {
 
   return (
     <div className="bg-white dark:bg-gray-900 text-black dark:text-white font-sans min-h-screen">
-      {/* ✅ Toast */}
+      {/*  Toast */}
       <Toast message={toast.message} visible={toast.visible} />
 
-      {/* ✅ Navbar */}
+      {/*  Navbar */}
       <Navbar
         cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
         onCartClick={() => setShowCart(!showCart)}
       />
 
-      {/* ✅ Cart Sidebar */}
+      {/*  Cart Sidebar */}
       {showCart && (
         <CartList
           cartItems={cart}
@@ -85,7 +84,7 @@ const handleAddToCart = (product) => {
         />
       )}
 
-      {/* ✅ Routes */}
+      {/* Routes */}
       <Routes>
         <Route
           path="/"

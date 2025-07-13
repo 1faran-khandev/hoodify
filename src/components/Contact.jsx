@@ -1,4 +1,3 @@
-// src/components/Contact.jsx
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {

@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-brand.black text-brand.white px-6 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
 
-        {/* 🧢 Brand Overview */}
+        {/* Brand Overview */}
         <div>
           <h2 className="text-2xl font-extrabold tracking-wide text-accent">Hoodify</h2>
           <p className="mt-3 text-sm text-gray-400">
@@ -14,7 +14,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* 🔗 Quick Navigation */}
+        {/* Quick Navigation */}
         <div>
           <h3 className="text-lg font-bold mb-3 text-white">Explore</h3>
           <ul className="space-y-2 text-sm text-gray-400">
@@ -41,7 +41,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* 🌐 Social Links */}
+        {/* Social Links */}
         <div>
           <h3 className="text-lg font-bold mb-3 text-white">Follow Us</h3>
           <div className="flex space-x-4">
@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* 🧾 Bottom Text */}
+      {/* Bottom Text */}
       <div className="mt-10 border-t border-gray-700 pt-6 text-center text-xs text-gray-500">
         © {new Date().getFullYear()} Hoodify — All rights reserved.
       </div>
@@ -69,7 +69,6 @@ export default function Footer() {
   );
 }
 
-// Optional: Use this scrollToSection if you're not already using it globally
 const scrollToSection = (id) => {
   const section = document.getElementById(id);
   if (section) {

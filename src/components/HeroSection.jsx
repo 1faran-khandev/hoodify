@@ -20,7 +20,7 @@ export default function HeroSection() {
       id="hero"
       className="relative w-full h-screen overflow-hidden bg-black"
     >
-      {/* 🖼️ Background Image */}
+      {/*  Background Image */}
       <img
         src={hoodieBanner}
         alt="Premium Winter Hoodies Collection"
@@ -28,9 +28,9 @@ export default function HeroSection() {
         loading="lazy"
       />
 
-      {/* 🟩 Overlay Content */}
+      {/*  Overlay Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        {/* 🔥 Title */}
+        {/*  Title */}
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function HeroSection() {
           Winter Hoodie Drop
         </motion.h1>
 
-        {/* 🧥 Subtitle */}
+        {/*  Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function HeroSection() {
           Performance meets comfort. Unleash your street game with our boldest hoodie collection yet.
         </motion.p>
 
-        {/* 🛍️ CTA Button - Black background, white text */}
+        {/*  CTA Button - Black background, white text */}
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.96 }}

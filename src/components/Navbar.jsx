@@ -21,7 +21,7 @@ export default function Navbar({ cartCount, onCartClick }) {
     <header className="fixed top-0 left-0 w-full z-50 bg-black/90 text-white backdrop-blur-md shadow-md transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between">
 
-        {/* 🧢 Brand Logo */}
+        {/* Brand Logo */}
         <Link to="/" className="text-2xl font-extrabold tracking-wide text-accent">
           Hoodify
         </Link>
@@ -50,7 +50,7 @@ export default function Navbar({ cartCount, onCartClick }) {
             )}
           </button>
 
-          {/* ☰ Mobile Toggle */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-white"
@@ -61,7 +61,7 @@ export default function Navbar({ cartCount, onCartClick }) {
         </div>
       </div>
 
-      {/* 📱 Mobile Dropdown */}
+      {/* Mobile Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black text-white px-4 pb-4 space-y-3 text-sm">
           <button onClick={() => scrollToSection("hero")} className="block w-full text-left hover:text-accent">Home</button>

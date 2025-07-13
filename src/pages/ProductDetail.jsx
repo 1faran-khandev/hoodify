@@ -1,4 +1,3 @@
-// src/pages/ProductDetail.jsx
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 

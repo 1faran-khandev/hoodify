@@ -1,4 +1,3 @@
-// src/pages/Checkout.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -66,7 +65,7 @@ export default function Checkout({ cartItems, onClearCart }) {
           </div>
         </div>
 
-        {/* 📋 Shipping Form */}
+        {/* Shipping Form */}
         <div>
           <h2 className="text-2xl font-bold uppercase mb-6 tracking-widest">Shipping Info</h2>
           <form onSubmit={handleSubmit} className="space-y-6">

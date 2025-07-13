@@ -8,7 +8,7 @@ export default function About() {
       id="about"
       className="bg-brand.black text-brand.white py-20 px-6"
     >
-      {/* 🧠 Vision Statement */}
+      {/*  Vision Statement */}
       <motion.div
         className="max-w-4xl mx-auto text-center"
         initial={{ opacity: 0, y: 50 }}
@@ -29,7 +29,7 @@ export default function About() {
         <div className="mt-10 border-t border-gray-700 w-20 mx-auto" />
       </motion.div>
 
-      {/* 🌟 Brand Mission Cards */}
+      {/*  Brand Mission Cards */}
       <motion.div
         className="grid md:grid-cols-3 gap-10 mt-16 max-w-5xl mx-auto text-left"
         initial="hidden"
@@ -74,7 +74,7 @@ export default function About() {
         ))}
       </motion.div>
 
-      {/* 🛍️ Call To Action */}
+      {/*  Call To Action */}
       <motion.div
         className="text-center mt-14"
         initial={{ opacity: 0 }}
