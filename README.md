@@ -1,25 +1,25 @@
 # Hoodify
 
-A modern, fully responsive hoodie eCommerce website built using React, Tailwind CSS, Framer Motion, and React Router.
-Performance meets comfort. Streetwear engineered for movement and bold expression.
+A modern, fully responsive hoodie eCommerce website built using **React**, **Tailwind CSS**, **Framer Motion**, and **React Router**.  
+Performance meets comfort — streetwear engineered for movement and bold expression.
 
 ## Features
 
--  Responsive UI: Seamlessly adapts to mobile, tablet, and desktop
--  Add to Cart: Dynamic cart system with item count and remove options
--  Toast Notification: Animated success messages on Add to Cart
--  Product Detail Page: View large product image, colors, and pricing
--  Checkout Flow: Checkout and order success confirmation
--  Dark Mode Ready
--  Styled with Tailwind CSS + Framer Motion
+**Responsive UI** : Seamlessly adapts to mobile, tablet, and desktop
+**Add to Cart** : Dynamic cart system with item count and remove options
+**Toast Notification** : Animated success message on Add to Cart
+**Product Detail Page** : Large product image, colors, and pricing
+**Checkout Flow** : Checkout and order success confirmation
+**Modern Styling** : Tailwind CSS + Framer Motion animations
 
 ##  Tech Stack
 
-- React.js: Frontend framework
-- Tailwind CSS: Utility-first styling
-- Framer Motion: Animations
-- React Router: Routing pages
-- Lucide React: Icon library
+- **React.js** – Frontend framework
+- **Tailwind CSS** – Utility-first CSS framework
+- **Framer Motion** – Animation library
+- **React Router** – Client-side routing
+- **Lucide React** – Icon system
+
 
 ## Getting Started
 
