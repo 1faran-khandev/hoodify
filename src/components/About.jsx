@@ -1,93 +1,71 @@
 import { Rocket, Leaf, Flame } from "lucide-react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function About() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   return (
     <section
       id="about"
-      className="bg-brand.black text-brand.white py-20 px-6"
+      className="bg-black text-white py-20 px-6"
     >
-      {/*  Vision Statement */}
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
+      <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-extrabold uppercase tracking-widest mb-6">
-          The <span className="text-accent">Hoodify</span> Vision
+          The <span className="text-blue-400">Hoodify</span> Vision
         </h2>
 
         <p className="text-lg md:text-xl leading-relaxed text-gray-300 max-w-3xl mx-auto">
-          At <span className="font-bold text-brand.white">Hoodify</span>, we don’t just make hoodies — we craft
-          performance-driven streetwear designed for motion, comfort, and bold expression.
-          Built for <span className="font-semibold text-accent">everyday athletes</span>, creatives, and those who move with intent.
+          At <span className="font-bold text-white">Hoodify</span>, we don't just make hoodies — we craft performance-driven streetwear made for movement, comfort, and bold expression.
+          Built for <span className="font-semibold text-white">everyday athletes</span>, creators, and rebels who move with intent.
         </p>
 
         <div className="mt-10 border-t border-gray-700 w-20 mx-auto" />
-      </motion.div>
+      </div>
 
-      {/*  Brand Mission Cards */}
-      <motion.div
-        className="grid md:grid-cols-3 gap-10 mt-16 max-w-5xl mx-auto text-left"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ staggerChildren: 0.2 }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.25 } },
-          hidden: {},
-        }}
-      >
-        {/* Cards */}
+      {/* Brand Values */}
+      <div className="grid md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto text-left">
         {[
           {
-            icon: <Rocket size={40} className="text-accent mb-4" />,
+            icon: <Rocket size={36} className="text-blue-400 mb-4" />,
             title: "Performance",
-            desc: "Engineered for flexibility, comfort, and all-day motion."
+            desc: "Engineered for flexibility, comfort, and all-day energy.",
           },
           {
-            icon: <Leaf size={40} className="text-accent mb-4" />,
+            icon: <Leaf size={36} className="text-blue-400 mb-4" />,
             title: "Sustainability",
-            desc: "Eco-conscious materials. Ethical production. Minimal impact."
+            desc: "Made with eco-conscious fabrics and ethical practices.",
           },
           {
-            icon: <Flame size={40} className="text-accent mb-4" />,
-            title: "Style Impact",
-            desc: "Urban-ready. Creator-approved. Built to stand out."
+            icon: <Flame size={36} className="text-blue-400 mb-4" />,
+            title: "Bold Style",
+            desc: "Statement pieces for streetwear lovers and lifestyle icons.",
           },
-        ].map((item, i) => (
-          <motion.div
-            key={i}
-            className="flex flex-col items-center md:items-start transition-transform hover:-translate-y-1"
-            variants={{
-              hidden: { opacity: 0, y: 40 },
-              visible: { opacity: 1, y: 0 },
-            }}
+        ].map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center md:items-start transition-transform duration-300 ${
+              hoveredIndex === index ? 'transform -translate-y-1' : ''
+            }`}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
           >
             {item.icon}
-            <h4 className="text-xl font-bold uppercase mb-2 tracking-wide">{item.title}</h4>
+            <h4 className="text-xl font-bold uppercase mb-2 tracking-wide">
+              {item.title}
+            </h4>
             <p className="text-gray-400 text-sm">{item.desc}</p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
-      {/*  Call To Action */}
-      <motion.div
-        className="text-center mt-14"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        viewport={{ once: true }}
-      >
+      {/* Call to Action */}
+      <div className="text-center mt-14">
         <a href="#shop">
-          <button className="px-6 py-3 bg-accent text-black rounded-lg font-semibold hover:brightness-125 transition shadow-md shadow-accent/30">
+          <button className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition">
             Shop Our Hoodies
           </button>
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 }

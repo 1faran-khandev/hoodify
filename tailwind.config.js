@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+  "./index.html",
+  "./src/**/*.{js,ts,jsx,tsx}",
+],
   darkMode: "class",
   theme: {
     extend: {
@@ -12,7 +15,7 @@ export default {
           neon: "#39FF14",
           red: "#EF4444",
         },
-        primary: "#0D0D0D",
+        black: "#0D0D0D",
         secondary: "#FAFAFA",
         accent: "#39FF14",
         danger: "#EF4444",

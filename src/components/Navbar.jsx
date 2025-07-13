@@ -12,7 +12,7 @@ export default function Navbar({ cartCount, onCartClick }) {
       section.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     } else {
-      // Navigate to homepage and scroll after load
+    
       window.location.href = `/#${id}`;
     }
   };
@@ -21,8 +21,8 @@ export default function Navbar({ cartCount, onCartClick }) {
     <header className="fixed top-0 left-0 w-full z-50 bg-black/90 text-white backdrop-blur-md shadow-md transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 flex items-center justify-between">
 
-        {/* Brand Logo */}
-        <Link to="/" className="text-2xl font-extrabold tracking-wide text-accent">
+        
+        <Link to="/" className="text-2xl font-extrabold tracking-wide text-blue-700">
           Hoodify
         </Link>
 
