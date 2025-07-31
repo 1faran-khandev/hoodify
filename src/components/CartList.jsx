@@ -6,10 +6,11 @@ export default function CartList({
   onClearCart,
   onCloseCart,
   onRemoveItem,
+  onUpdateQuantity,
 }) {
-  //  Calculate Total
   const total = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity * (1 - (item.discount || 0)),
+    (sum, item) =>
+      sum + item.price * item.quantity * (1 - (item.discount || 0)),
     0
   );
 
@@ -22,7 +23,7 @@ export default function CartList({
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="fixed right-0 top-0 w-80 sm:w-96 h-full bg-white dark:bg-gray-900 shadow-2xl z-50 flex flex-col"
       >
-        {/*  Header */}
+        {/* Header */}
         <div className="p-4 border-b flex justify-between items-center font-bold text-lg">
           <span>Your Cart</span>
           <button
@@ -33,7 +34,7 @@ export default function CartList({
           </button>
         </div>
 
-        {/*  Cart Items */}
+        {/* Cart Items */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {cartItems.length === 0 ? (
             <p className="text-gray-500 text-sm text-center mt-10">
@@ -45,10 +46,39 @@ export default function CartList({
                 key={item.id}
                 className="flex justify-between items-start border-b pb-3"
               >
-                <div>
-                  <h4 className="font-semibold text-sm sm:text-base">{item.name}</h4>
-                  <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-sm sm:text-base">
+                    {item.name}
+                  </h4>
+                  <div className="text-xs text-gray-500 mt-1">
+                    ${item.price.toFixed(2)} × {item.quantity}{" "}
+                    {item.discount > 0 && (
+                      <span className="text-red-500 ml-1">
+                        (-{Math.round(item.discount * 100)}%)
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Quantity Controls */}
+                  <div className="flex items-center gap-2 mt-2">
+                    <button
+                      onClick={() => onUpdateQuantity(item.id, "dec")}
+                      className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-sm font-semibold"
+                      disabled={item.quantity <= -1}
+                    >
+                      −
+                    </button>
+                    <span className="text-sm">{item.quantity}</span>
+                    <button
+                      onClick={() => onUpdateQuantity(item.id, "inc")}
+                      className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-sm font-semibold"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
+
+                {/* Remove Button */}
                 <button
                   onClick={() => onRemoveItem(item.id)}
                   className="text-red-500 text-sm hover:underline"
@@ -60,7 +90,7 @@ export default function CartList({
           )}
         </div>
 
-        {/*  Footer */}
+        {/* Footer */}
         {cartItems.length > 0 && (
           <div className="p-4 border-t space-y-4">
             <div className="flex justify-between text-lg font-semibold">

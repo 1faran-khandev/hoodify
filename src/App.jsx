@@ -19,68 +19,91 @@ import products from "./data/products";
 export default function App() {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
-
-  //  Toast state
   const [toast, setToast] = useState({ message: "", visible: false });
 
-const showToast = (msg) => {
-  setToast({ message: msg, visible: true });
-  setTimeout(() => setToast({ message: "", visible: false }), 2500);
-};
+  // Load cart from localStorage
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
 
-const handleAddToCart = (product) => {
+  // Save cart to localStorage on every change
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // Toast helper
+  const showToast = (msg) => {
+    setToast({ message: msg, visible: true });
+    setTimeout(() => setToast({ message: "", visible: false }), 2000);
+  };
+
+  // Add to cart
+  const handleAddToCart = (product) => {
   setCart((prevCart) => {
     const exists = prevCart.find((item) => item.id === product.id);
     if (exists) {
-      showToast("Increased quantity in cart ");
+      showToast("Increased quantity in cart");
       return prevCart.map((item) =>
         item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       );
     } else {
-      showToast("Added to cart ");
+      showToast(`${product.name} added to cart`);
       return [...prevCart, { ...product, quantity: 1 }];
     }
   });
+};
 
-    // Show toast
-    setToast({ message: `${product.name} added to cart `, visible: true });
-    setTimeout(() => {
-      setToast({ message: "", visible: false });
-    }, 2000);
-  };
 
- 
+  // Remove single item
   const handleRemoveItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    showToast("Item removed from cart");
   };
 
-  // Clear all
+  // Clear entire cart
   const handleClearCart = () => {
     setCart([]);
+    showToast("Cart cleared");
   };
 
-  useEffect(() => {
-    console.log("🛒 Cart Items:", cart);
-  }, [cart]);
+  // Quantity change
+  const handleUpdateQuantity = (id, action) => {
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: action === "inc" ? item.quantity + 1 : item.quantity - 1,
+              }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
 
   return (
     <div className="bg-white dark:bg-gray-900 text-black dark:text-white font-sans min-h-screen">
-      {/*  Toast */}
+      {/* Toast */}
       <Toast message={toast.message} visible={toast.visible} />
 
-      {/*  Navbar */}
+      {/* Navbar */}
       <Navbar
         cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
         onCartClick={() => setShowCart(!showCart)}
       />
 
-      {/*  Cart Sidebar */}
+      {/* Cart Sidebar */}
       {showCart && (
         <CartList
           cartItems={cart}
           onClearCart={handleClearCart}
           onCloseCart={() => setShowCart(false)}
           onRemoveItem={handleRemoveItem}
+          onUpdateQuantity={handleUpdateQuantity}
         />
       )}
 
@@ -109,10 +132,7 @@ const handleAddToCart = (product) => {
           element={<Checkout cartItems={cart} onClearCart={handleClearCart} />}
         />
 
-        <Route
-          path="/success"
-          element={<Success onClearCart={handleClearCart} />}
-        />
+        <Route path="/success" element={<Success onClearCart={handleClearCart} />} />
       </Routes>
     </div>
   );

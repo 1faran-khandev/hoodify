@@ -5,10 +5,10 @@ export default function Checkout({ cartItems, onClearCart }) {
   const [form, setForm] = useState({ name: "", email: "", address: "" });
   const navigate = useNavigate();
 
-  const total = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity * (1 - (item.discount || 0)),
-    0
-  );
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const discount = cartItems.reduce((sum, item) => sum + item.price * item.quantity * (item.discount || 0), 0);
+  const shipping = cartItems.length > 0 ? 4.99 : 0;
+  const total = subtotal - discount + shipping;
 
   const handleInput = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,7 +19,6 @@ export default function Checkout({ cartItems, onClearCart }) {
 
     const itemCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
-    // Navigate to Success page with order data
     navigate("/success", {
       state: {
         name: form.name,
@@ -28,27 +27,24 @@ export default function Checkout({ cartItems, onClearCart }) {
       },
     });
 
-    // Clear cart after successful order
     onClearCart();
   };
 
   return (
     <section className="min-h-screen py-16 px-4 sm:px-6 lg:px-20 bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-        {/* 🛍 Order Summary */}
+        {/*  Order Summary */}
         <div>
           <h2 className="text-2xl font-bold uppercase mb-6 tracking-widest">Order Summary</h2>
           <div className="space-y-4">
             {cartItems.length === 0 ? (
-              <p className="text-gray-600">Your cart is empty.</p>
+              <p className="text-gray-600 dark:text-gray-400">Your cart is empty.</p>
             ) : (
               cartItems.map((item) => (
                 <div key={item.id} className="flex justify-between border-b pb-2">
                   <div>
                     <h4 className="font-semibold">{item.name}</h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Qty: {item.quantity}
-                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Qty: {item.quantity}</p>
                   </div>
                   <p className="font-semibold">
                     ${(item.price * item.quantity * (1 - item.discount)).toFixed(2)}
@@ -56,16 +52,31 @@ export default function Checkout({ cartItems, onClearCart }) {
                 </div>
               ))
             )}
+
             {cartItems.length > 0 && (
-              <div className="flex justify-between mt-6 pt-4 border-t font-bold text-lg">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+              <div className="space-y-2 mt-4 pt-4 border-t">
+                <div className="flex justify-between text-sm">
+                  <span>Subtotal:</span>
+                  <span>${subtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-red-500">
+                  <span>Discount:</span>
+                  <span>- ${discount.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>Shipping:</span>
+                  <span>${shipping.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between font-bold text-lg pt-2 border-t">
+                  <span>Total:</span>
+                  <span>${total.toFixed(2)}</span>
+                </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* Shipping Form */}
+        {/*  Shipping Form */}
         <div>
           <h2 className="text-2xl font-bold uppercase mb-6 tracking-widest">Shipping Info</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -98,6 +109,7 @@ export default function Checkout({ cartItems, onClearCart }) {
             <button
               type="submit"
               className="bg-black text-white px-6 py-3 rounded font-semibold tracking-wide hover:bg-gray-800 transition w-full"
+              disabled={!form.name || !form.email || !form.address}
             >
               Place Order
             </button>
