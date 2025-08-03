@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
+        {/* Links */}
         <div>
           <h3 className="text-lg font-bold mb-3 text-white">Explore</h3>
           <ul className="space-y-2 text-sm text-gray-400">
