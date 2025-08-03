@@ -100,7 +100,7 @@ export default function Navbar({ cartCount, onCartClick }) {
         </div>
       </div>
 
-      {/* ✅ Mobile Dropdown */}
+      {/* Mobile Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black text-white px-4 pb-4 space-y-3 text-sm">
           <button
