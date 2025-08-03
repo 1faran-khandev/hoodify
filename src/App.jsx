@@ -29,12 +29,12 @@ export default function App() {
     }
   }, []);
 
-  // Save cart to localStorage on every change
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  // Toast helper
+  // Toast 
   const showToast = (msg) => {
     setToast({ message: msg, visible: true });
     setTimeout(() => setToast({ message: "", visible: false }), 2000);
