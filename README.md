@@ -53,7 +53,7 @@ npm install
 
 # 4. Run the development server
 npm run dev
-Hoodify will be running locally at http://localhost:5173 (or as specified in your setup).
+Hoodify will be running locally at http://localhost:5173 .
 
 # Usage
 Browse products, view details, select color options.
