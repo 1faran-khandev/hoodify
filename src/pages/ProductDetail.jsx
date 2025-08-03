@@ -13,7 +13,7 @@ export default function ProductDetail({ products, onAddToCart }) {
   if (!product) {
     return (
       <div className="text-center py-20 text-xl text-gray-600 dark:text-gray-400">
-        Product not found 😕
+        Product not found 
       </div>
     );
   }
@@ -21,14 +21,14 @@ export default function ProductDetail({ products, onAddToCart }) {
   return (
     <section className="min-h-screen pt-32 pb-20 px-6 bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10">
-        {/* 🖼 Product Image */}
+        {/*  Product Image */}
         <img
           src={product.defaultImg}
           alt={`${product.name} - Hoodie Preview`}
           className="w-full md:w-1/2 object-cover rounded-lg shadow-lg transition-transform hover:scale-105"
         />
 
-        {/* 📄 Product Info */}
+        {/*  Product Info */}
         <div className="flex-1 space-y-4">
           <h1 className="text-3xl md:text-4xl font-bold tracking-wide">
             {product.name}
@@ -52,7 +52,7 @@ export default function ProductDetail({ products, onAddToCart }) {
             onClick={() => onAddToCart(product)}
             className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all"
           >
-            🛒 Add to Cart
+             Add to Cart
           </button>
 
           <Link
