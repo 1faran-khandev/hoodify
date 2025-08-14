@@ -84,8 +84,3 @@ GitHub : https://github.com/1faran-khandev
 # License
 This project is licensed under the MIT License.
 
-# 3. Install dependencies
-npm install 
-
-# 4. Run the development server
-npm run dev
